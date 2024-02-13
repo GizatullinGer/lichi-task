@@ -1,3 +1,21 @@
 {
-	"extends": "airbnb"
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["airbnb", "next/core-web-vitals"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["react"],
+  "rules": {
+    "prefer-const": "warn",
+    "no-eval": "error",
+    "no-implicit-globals": "warn",
+    "no-unused-vars": "warn",
+    "no-console": "warn",
+    "react/jsx-uses-vars": "warn",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "no-multiple-empty-lines": "off",
+    "react/function-component-definition": "off"
+  }
 }
