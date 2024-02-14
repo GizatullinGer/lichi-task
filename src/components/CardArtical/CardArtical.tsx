@@ -35,6 +35,7 @@ const CardArtical: React.FC<CardArticalProps> = ({ artical }) => {
         <Button
           text="Перейти"
           onClick={() => setIsOpenModal(true)}
+          size="m"
         />
         <Modal
           isOpen={isOpenModal}
