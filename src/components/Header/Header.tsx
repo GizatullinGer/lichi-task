@@ -8,7 +8,10 @@ const Header: React.FC = () => {
       <div>Blog</div>
       <div>
         <Link href={'/createartical'}>
-          <Button text="Новая запись" />
+          <Button
+            text="Новая запись"
+            size="m"
+          />
         </Link>
       </div>
     </header>
