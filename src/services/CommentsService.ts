@@ -24,7 +24,15 @@ export const commentsService = createApi({
       }),
       invalidatesTags: ['Comments'],
     }),
+    editComment: builder.mutation<any, any>({
+      query: body => ({
+        url: `${URL_PREFIX}/${body?.id}`,
+        method: 'PUT',
+        body: { comment: body.comment },
+      }),
+      invalidatesTags: ['Comments'],
+    }),
   }),
 });
 
-export const { useGetCommentsQuery, useAddCommentMutation } = commentsService;
+export const { useGetCommentsQuery, useAddCommentMutation, useEditCommentMutation } = commentsService;

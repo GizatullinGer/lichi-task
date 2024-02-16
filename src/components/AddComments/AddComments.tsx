@@ -35,6 +35,13 @@ const AddComments: React.FC<AddCommentsProps> = ({ article }) => {
     reset();
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit(onSubmit)();
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Controller
@@ -47,6 +54,7 @@ const AddComments: React.FC<AddCommentsProps> = ({ article }) => {
               placeholder="Оставить комментарий"
               field={field}
               classLabel="text-[18px] w-full"
+              handleKeyDown={handleKeyDown}
               rows={5}
             />
             {errors.comment && <span className="text-red-500">{errors.comment.message}</span>}

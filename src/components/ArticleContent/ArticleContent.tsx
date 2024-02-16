@@ -30,6 +30,8 @@ const ArticleContent: React.FC<ArticleContentProps> = ({ article }) => {
         <AddComments article={article} />
       </div>
       <h3 className="mt-[15px] text-[18px] font-bold">Комментарии:</h3>
+      {isLoading && <p>Обработка запроса...</p>}
+      {isError && <p className="text-[#ff0000]">Произошла ошибка</p>}
       {isSuccess &&
         dataComments
           .filter(comment => article.uuid === comment.uuid_article)
