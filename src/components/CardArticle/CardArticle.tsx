@@ -12,7 +12,7 @@ const CardArticle: React.FC<CardArticleProps> = ({ article }) => {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
   return (
-    <div className="bg-white p-[30px] rounded-xl mt-[30px] first:mt-0">
+    <div className="bg-white p-[30px] rounded-xl mt-[30px] mx-[10px] first:mt-0">
       <h2 className="text-xl font-bold">{article.title}</h2>
       <p className="mt-[15px]">{article.description}</p>
       {article.img && (

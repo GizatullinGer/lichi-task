@@ -15,11 +15,12 @@ type TaddCommentArea = {
 type AddCommentsProps = { article: TgetArticleResponse };
 
 const AddComments: React.FC<AddCommentsProps> = ({ article }) => {
-  const [addComment] = useAddCommentMutation();
+  const [addComment, { isError, isLoading, isSuccess }] = useAddCommentMutation();
 
   const {
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm<TaddCommentArea>({
     defaultValues: {
@@ -31,6 +32,7 @@ const AddComments: React.FC<AddCommentsProps> = ({ article }) => {
     const formData = { ...data, uuid_article: article.uuid, user: 'admin' };
 
     addComment(formData);
+    reset();
   };
 
   return (
@@ -52,11 +54,16 @@ const AddComments: React.FC<AddCommentsProps> = ({ article }) => {
         )}
       />
 
-      <Button
-        className="mt-[15px]"
-        text="Добавить"
-        size="s"
-      />
+      <div className="mt-[15px] text-[12px] flex items-center gap-8">
+        <Button
+          text="Добавить"
+          size="s"
+        />
+
+        {isLoading && <p>Обработка запроса...</p>}
+        {isError && <p className="text-[#ff0000]">Произошла ошибка</p>}
+        {isSuccess && <p className="text-[green]">Отправлено</p>}
+      </div>
     </form>
   );
 };

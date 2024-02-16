@@ -6,7 +6,7 @@ import FormCreateArticle from '@/components/FormCreateArticle/FormCreateArticle'
 
 const CreateArticle: React.FC = () => {
   return (
-    <div className="max-w-[860px] h-full mx-auto py-8 px-[30px] bg-[#ffffff]">
+    <div className="max-w-[860px] h-full mx-auto py-8 px-[10px] md:px-[30px] bg-[#ffffff]">
       <Link href={'/'}>
         <Button
           text="На главную"

@@ -40,14 +40,14 @@ const Modal: React.FC<ModalProps> = ({ children, isOpen, setIsOpenModal }) => {
     <React.Fragment>
       {isOpen && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-[rgba(0,0,0,.5)] z-10">
-          <div className="relative bg-[#ffffff] w-[860px] h-[90vh] p-[30px] rounded-xl">
+          <div className="relative bg-[#ffffff] w-[860px] h-[90vh] p-[30px] m-[30px] rounded-xl">
             <div
               className="absolute top-3 right-3 text-[24px] font-bold cursor-pointer"
               onClick={() => setIsOpenModal(false)}
             >
               &times;
             </div>
-            <div className="h-full overflow-auto">{children}</div>
+            <div className="h-full overflow-auto pr-[10px]">{children}</div>
           </div>
         </div>
       )}

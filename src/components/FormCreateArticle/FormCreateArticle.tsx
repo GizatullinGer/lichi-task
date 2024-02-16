@@ -22,6 +22,7 @@ const FormCreateArticle: React.FC = () => {
   const {
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm<TcreateArticleForm>({
     defaultValues: {
@@ -36,6 +37,7 @@ const FormCreateArticle: React.FC = () => {
     const formData = { ...data, uuid: uuidv4(), date: `${currentDate.getDate()}.${currentDate.getMonth() + 1}.${currentDate.getFullYear()}` };
 
     createArticle(formData);
+    reset();
   };
 
   return (
