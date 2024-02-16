@@ -7,7 +7,7 @@ const Header: React.FC = () => {
     <header className="w-full h-[80px] fixed flex items-center justify-between bg-[#ffeacc] px-[30px]">
       <div>Blog</div>
       <div>
-        <Link href={'/createartical'}>
+        <Link href={'/createarticel'}>
           <Button
             text="Новая запись"
             size="m"
