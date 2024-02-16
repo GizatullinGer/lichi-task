@@ -1,11 +1,10 @@
-import Button from '@/components/@UIkit/Button/Button';
-import FormCreateArticle from '@/components/FormCreateArticle/FormCreateArticle';
 import Link from 'next/link';
 import React from 'react';
 
-type Props = {};
+import Button from '@/components/@UIkit/Button/Button';
+import FormCreateArticle from '@/components/FormCreateArticle/FormCreateArticle';
 
-const CreateArtical: React.FC = (props: Props) => {
+const CreateArticle: React.FC = () => {
   return (
     <div className="max-w-[860px] h-full mx-auto py-8 px-[30px] bg-[#ffffff]">
       <Link href={'/'}>
@@ -23,4 +22,4 @@ const CreateArtical: React.FC = (props: Props) => {
   );
 };
 
-export default CreateArtical;
+export default CreateArticle;

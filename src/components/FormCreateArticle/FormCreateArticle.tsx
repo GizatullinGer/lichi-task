@@ -2,19 +2,23 @@
 
 import React from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { v4 as uuidv4 } from 'uuid';
 
 import Button from '../@UIkit/Button/Button';
 import Input from '../@UIkit/Input/Input';
 import Textarea from '../@UIkit/Textarea/Textarea';
 import InputFile from '../@UIkit/InputFile/InputFile';
+import { useCreateArticleMutation } from '@/services/ArticleService';
 
 type TcreateArticleForm = {
   title: string;
   description: string;
-  img: string | undefined;
+  img: FileList | undefined;
 };
 
 const FormCreateArticle: React.FC = () => {
+  const [createArticle, { isSuccess, isError, isLoading }] = useCreateArticleMutation();
+
   const {
     handleSubmit,
     control,
@@ -29,14 +33,14 @@ const FormCreateArticle: React.FC = () => {
 
   const onSubmit: SubmitHandler<TcreateArticleForm> = (data: TcreateArticleForm) => {
     const currentDate = new Date();
-    const formData = { ...data, date: `${currentDate.getDate()}-${currentDate.getMonth() + 1}-${currentDate.getFullYear()}` };
+    const formData = { ...data, uuid: uuidv4(), date: `${currentDate.getDate()}.${currentDate.getMonth() + 1}.${currentDate.getFullYear()}` };
 
-    console.log(formData, 'finalData');
+    createArticle(formData);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="mb-[25px]">
+      <div>
         <Controller
           name="title"
           control={control}
@@ -55,7 +59,7 @@ const FormCreateArticle: React.FC = () => {
           )}
         />
       </div>
-      <div className="mb-[25px]">
+      <div className="mt-[25px]">
         <Controller
           name="description"
           control={control}
@@ -75,7 +79,7 @@ const FormCreateArticle: React.FC = () => {
         />
       </div>
 
-      <div className="mb-[25px]">
+      <div className="mt-[25px]">
         <Controller
           name="img"
           control={control}
@@ -90,10 +94,16 @@ const FormCreateArticle: React.FC = () => {
         />
       </div>
 
-      <Button
-        text="Создать"
-        size="m"
-      />
+      <div className="mt-[25px] text-[20px] flex items-center gap-8">
+        <Button
+          text="Создать"
+          size="m"
+        />
+
+        {isLoading && <p>Обработка запроса...</p>}
+        {isError && <p className="text-[#ff0000]">Ошибка создания поста</p>}
+        {isSuccess && <p className="text-[green]">Пост успешно создан!</p>}
+      </div>
     </form>
   );
 };

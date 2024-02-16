@@ -1,3 +1,9 @@
-const reducers = {}
+import { articleService } from '@/services/ArticleService';
+import { commentsService } from '@/services/CommentsService';
 
-export default reducers
+const reducers = {
+  [articleService.reducerPath]: articleService.reducer,
+  [commentsService.reducerPath]: commentsService.reducer,
+};
+
+export default reducers;
